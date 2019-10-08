@@ -1,9 +1,10 @@
 
 class IocagibleParser:
 
-    def __init__(self, name, vars):
+    def __init__(self, name, vars, pretend):
         self.name = name
         self.vars = vars
+        self.pretend = pretend
 
     def handleCopy(self, params):
         # iocage exec sonarr mkdir /usr/local/etc/rc.d
