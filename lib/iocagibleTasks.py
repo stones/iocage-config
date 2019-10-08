@@ -1,4 +1,7 @@
 
+
+from copyTask import CopyTask
+
 class IocagibleTasks:
 
     def __init__(self, name, vars, pretend):
@@ -17,6 +20,12 @@ class IocagibleTasks:
         # except subprocess.CalledProcessError as e:
         #     print e.output
 
+        # task = CopyTask()
+        # task.run()
+
+        temp  = CopyTask(self.name, self.vars)
+
+        temp.run(params)
         print('Copy not implemented:', params)
 
     def handleExec(self, params):

@@ -1,0 +1,80 @@
+{
+	"version": "1.0.0",
+	"name": "sonarr",
+	"vars": {
+		"ip": "192.168.1.2",
+		"gateway": "192.168.1.1",
+		"release": "$(freebsd-version | sed \"s/STABLE/RELEASE/g\")",
+		"interface": "vnet0"
+	},
+	"packages": [
+		"mono",
+		"mediainfo",
+		"sqlite3",
+		"ca_root_nss",
+		"curl"
+	],
+	"tasks": [
+		{
+			"name": "Add media user",
+			"mediaUser": "sonarr"
+		},
+		{
+			"name": "Copy sonnar RC",
+			"copy": {
+				"src": "./sonarr.rc",
+				"dest": "/usr/local/etc/rc.d/sonarr",
+				"chmod": 555
+			}
+		},
+		{
+			"name": "Mount the config folder",
+			"mount": {
+				"src": "/mnt/Tank/configs/sonarr",
+				"dest": "/mnt/config"
+			}
+		},
+		{
+			"name": "Mount the transfer folder",
+			"mount": {
+				"src": "/mnt/Tank/transfer/complete/television",
+				"dest": "/mnt/transfer"
+			}
+		},
+		{
+			"name": "Mount the transfer folder",
+			"mount": {
+				"src": "/mnt/Tank/library/video/tv",
+				"dest": "/mnt/library"
+			}
+		},
+		{
+			"name": "Link mono lib to where it",
+			"exec": "ln -s /usr/local/bin/mono /usr/bin/mono"
+		},
+		{
+			"name": "Download Sonarr from source",
+			"fetch": {
+				"src": "http://download.sonarr.tv/v2/master/mono/NzbDrone.master.tar.gz",
+				"dest": "/usr/local/share",
+				"unzip": true,
+				"remove": true
+			}
+		},
+		{
+			"name": "change config perms",
+			"exec": "chown -R media:media /usr/local/share/NzbDrone /mnt/config"
+		},
+		{
+			"name": "Enable service on restart",
+			"sysrc": "sonarr_enable=YES"
+		},
+		{
+			"name": "Start the service",
+			"service": {
+				"name": "sonarr",
+				"action": "start"
+			}
+		}
+	]
+}

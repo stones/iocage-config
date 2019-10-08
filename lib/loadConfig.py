@@ -1,9 +1,9 @@
-import yaml
+import json
 
 def load(filepath):
     with open(filepath , 'r') as stream:
         try:
-            return yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
+            return json.load(stream)
+        except json.JSONDecodeError as exc:
             print(exc)
 
