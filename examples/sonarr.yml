@@ -20,10 +20,10 @@ tasks:
   - name: Add media user
     mediaUser:  sonarr
 
-  - name:  Copy sonnar RC
+  - name: Copy sonnar RC
     copy: 
         src: ./sonarr.rc
-        dest:  /root/usr/local/etc/rc.d/sonarr
+        dest:  /usr/local/etc/rc.d/sonarr
         chmod: 555
 
   - name: Mount the config folder
