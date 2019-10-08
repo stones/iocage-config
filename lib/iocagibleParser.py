@@ -1,17 +1,22 @@
-#!/usr/bin/python3.6
-import sys
-import subprocess
-sys.path.insert(1, './lib')
 
-from parseCliArgs import cliArgs
-from iocagibleParser import IocagibleParser
-from loadConfig import load
+class IocagibleParser:
 
-config = load(cliArgs.file)
+    def __init__(self, name, vars):
+        self.name = name
+        self.vars = vars
 
-parser =  IocagibleParser(config['name'], config['vars'])
 
-print(parser.name)
+# #!/usr/bin/python3.6
+# import sys
+# import subprocess
+# sys.path.insert(1, './lib')
+
+# from parseCliArgs import cliArgs
+# from loadConfig import load
+
+# config = load(cliArgs.file)
+
+# jailName = 'sonarr'
 
 # def handleCopy(params):
 #     # iocage exec sonarr mkdir /usr/local/etc/rc.d
