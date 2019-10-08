@@ -21,9 +21,9 @@ tasks:
     # iocage exec sonarr "pw groupmod media -m sonarr"
   - name:  Copy sonnar RC
     copy: 
-      - src: ./sonarr.rc
-      - dest:  /root/usr/local/etc/rc.d/sonarr
-      - chmod: 555
+        src: ./sonarr.rc
+        dest:  /root/usr/local/etc/rc.d/sonarr
+        chmod: 555
       # iocage exec sonarr mkdir /usr/local/etc/rc.d
       # cp ./sonarr.rc  /mnt/iocage/jails/sonarr
       # iocage exec sonarr chmod 555 /usr/local/etc/rc.d/sonarr
@@ -69,6 +69,6 @@ tasks:
 
   - name: Enable service on restat
     service:  
-      - name: sonarr
-      - action: start
+      name: sonarr
+      action: start
     # iocage exec sonarr service sonarr start
