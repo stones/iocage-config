@@ -10,6 +10,6 @@ from loadConfig import load
 
 config = load(cliArgs.file)
 
-parser =  IocagibleParser(config['name'], config['vars'], cliArgs.pretend)
+parser = IocagibleParser()
 
-parser.runTasks(config['tasks'])
+parser.create( config, cliArgs.pretend)

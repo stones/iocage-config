@@ -1,15 +1,14 @@
-import sys
-sys.path.insert(1, './')
-
 from iocagibleTasks import IocagibleTasks
 
 class IocagibleParser:
 
-    def __init__(self, name, vars, pretend):
-        self.name = name
-        self.vars = vars
-        self.pretend = pretend
-
-    def runTasks(self, tasks):
-        taskRunner = IocagibleTasks(self.name, self.vars, self.pretend) 
+    def runTasks(self,name, vars, tasks, pretend):
+        taskRunner = IocagibleTasks(name, vars, pretend) 
         taskRunner.run(tasks)
+
+    def create(self, config, pretend):
+        name =config['name']
+        vars = config['vars']
+        tasks = config['tasks']
+
+        self.runTasks(name, vars, tasks, pretend)
