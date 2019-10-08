@@ -1,2 +1,5 @@
-# iocage-config
-A simple script to help setting up icoage jails
+# Iocagible
+
+> A sane way of writing FreeNas plugins.
+
+
