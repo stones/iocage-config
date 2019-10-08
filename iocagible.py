@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 import sys
 import subprocess
+
 sys.path.insert(1, './lib')
 
 from parseCliArgs import cliArgs
