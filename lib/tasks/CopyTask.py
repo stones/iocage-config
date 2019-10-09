@@ -1,12 +1,11 @@
 
-from baseTask import BaseTask
+from BaseTask import BaseTask
 
 class CopyTask(BaseTask):
-    pass
+    task = 'copy'
 
-    def getTestString(self, name):
-        return 'Copy still not implemented' + name
-
+    def run(self, params, pretend):
+        print(self.copy, ' not implemented')
 # def copyTask(params, vars pretend):
 #     # iocage exec sonarr mkdir /usr/local/etc/rc.d
 #     # cp ./sonarr.rc  /mnt/iocage/jails/sonarr
@@ -17,5 +16,4 @@ class CopyTask(BaseTask):
 #     #     subprocess.check_output(['iocage', 'exec', 'sonarr', 'chmod', '555', '/usr/local/etc/rc.d/sonarr' ])
 #     # except subprocess.CalledProcessError as e:
 #     #     print e.output
-
 #     print('Copy not implemented:', params)

@@ -1,4 +1,5 @@
 from iocagibleTasks import IocagibleTasks
+from CreateJailTask import CreateJailTask
 
 class IocagibleParser:
 
@@ -11,4 +12,7 @@ class IocagibleParser:
         vars = config['vars']
         tasks = config['tasks']
 
-        self.runTasks(name, vars, tasks, pretend)
+        createJail = CreateJailTask(name, vars)
+        createJail.run({}, pretend)
+        # Reinstate when finished testing
+        # self.runTasks(name, vars, tasks, pretend)

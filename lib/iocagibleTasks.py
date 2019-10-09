@@ -1,6 +1,4 @@
-
-
-from copyTask import CopyTask
+from CopyTask import CopyTask
 
 class IocagibleTasks:
 
@@ -8,25 +6,6 @@ class IocagibleTasks:
         self.name = name
         self.vars = vars
         self.pretend = pretend
-
-    def handleCopy(self, params):
-        # iocage exec sonarr mkdir /usr/local/etc/rc.d
-        # cp ./sonarr.rc  /mnt/iocage/jails/sonarr
-        # iocage exec sonarr chmod 555 /usr/local/etc/rc.d/sonarr
-        # try:
-        #     subprocess.check_output(['iocage', 'exec', jailName, 'mkdir','/usr/local/etc/rc.d' ])
-        #     subprocess.check_output(['cp', params.src, '/root' + params.dest ])
-        #     subprocess.check_output(['iocage', 'exec', 'sonarr', 'chmod', '555', '/usr/local/etc/rc.d/sonarr' ])
-        # except subprocess.CalledProcessError as e:
-        #     print e.output
-
-        # task = CopyTask()
-        # task.run()
-
-        temp  = CopyTask(self.name, self.vars)
-
-        temp.run(params)
-        print('Copy not implemented:', params)
 
     def handleExec(self, params):
         # iocage exec sonarr ln -s /usr/local/bin/mono /usr/bin/mono
@@ -65,7 +44,7 @@ class IocagibleTasks:
 
     def handleTask(self, taskName, config):
         if(taskName == 'copy'):
-            self.handleCopy(config)
+            CopyTask(self.name, self.vars).run(config, self.pretend)
         elif(taskName == 'exec'):
             self.handleExec(config)
         elif(taskName == 'fetch'):
