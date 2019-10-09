@@ -26,9 +26,12 @@ class CreateJailTask(BaseTask):
         config = self.combineConfigs(params)
 
         command = [ 
-            'iocage create ' 
-            '-n "{{ name }}"',  
-            '-r "{{ release }}"', 
+            'iocage',
+            'create' 
+            '-n',
+            '"{{ name }}"',  
+            '-r',
+            '{{ release }}', 
             'ip4_addr="{{ interface }}|{{ip}}/24"', 
             'defaultrouter="{{gateway}}"', 
             'vnet="{{vnet}}"', 
