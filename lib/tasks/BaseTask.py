@@ -26,7 +26,11 @@ class BaseTask:
                 print('PRETEND:', ' '.join(command))
         else:
             for command in commands:
-                print( self.getTestString(self.jailName))
+                try:
+                    subprocess.check_output(command)
+                except subprocess.CalledProcessError as e:
+                    print(e.output)
+
 
     def run(self, params, pretend):
         print('Please implement a `run` function for', self.task)
