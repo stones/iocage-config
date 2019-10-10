@@ -29,7 +29,7 @@ class BaseTask:
         else:
             for command in commands:
                 try:
-                    subprocess.check_output(command)
+                    print(subprocess.check_output(command))
                 except subprocess.CalledProcessError as e:
                     print(e.output)
 

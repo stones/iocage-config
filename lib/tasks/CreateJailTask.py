@@ -31,7 +31,7 @@ class CreateJailTask(BaseTask):
             '-n',
             '{{ name }}',  
             '-r',
-            '"{{ release }}"', 
+            '{{ release }}', 
             'ip4_addr="{{ interface }}|{{ip}}/24"', 
             'defaultrouter="{{gateway}}"', 
             'vnet="{{vnet}}"', 
