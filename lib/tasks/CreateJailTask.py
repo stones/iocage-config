@@ -20,7 +20,7 @@ class CreateJailTask(BaseTask):
     }
 
     def combineConfigs(self, params):
-        return { **{'name': self.name}, **self.config, **self.defaultParams, **params }
+        return { **{'name': self.name}, **self.defaultParams, **self.config,  **params }
 
     def run(self, params, pretend):
         config = self.combineConfigs(params)

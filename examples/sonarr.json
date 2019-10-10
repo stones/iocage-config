@@ -2,7 +2,7 @@
 	"version": "1.0.0",
 	"name": "example-sonarr",
 	"vars": {
-		"ip": "192.168.1.2",
+		"ip": "192.168.1.251",
 		"gateway": "192.168.1.1",
 		"release": "$(freebsd-version | sed \"s/STABLE/RELEASE/g\")",
 		"interface": "vnet0"
