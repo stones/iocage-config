@@ -31,7 +31,7 @@ class BaseTask:
                 try:
                     # print(subprocess.check_output(command))
                     proc = subprocess.Popen(command)
-                    print(list(proc.args))
+                    print(command)
                 except subprocess.CalledProcessError as e:
                     print(e.output)
 
