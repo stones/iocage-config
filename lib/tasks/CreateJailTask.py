@@ -11,7 +11,7 @@ class CreateJailTask(BaseTask):
 
     defaultParams = {
        'ip': '192.168.1.51',
-       'release': '$(freebsd-version | sed "s/STABLE/RELEASE/g")',
+       'release': '11.2-RELEASE',
        'gateway': '192.168.1.1',
        'vnet': 'on',
        'raw_sockets': 1,
@@ -27,9 +27,9 @@ class CreateJailTask(BaseTask):
 
         command = [ 
             'iocage',
-            'create' 
+            'create' ,
             '-n',
-            '"{{ name }}"',  
+            '{{ name }}',  
             '-r',
             '{{ release }}', 
             'ip4_addr="{{ interface }}|{{ip}}/24"', 
